@@ -150,3 +150,24 @@ django api 使用mysql
 2.pip install mysqlclient
 3. python manage.py makemigrations bookList
 4.  python manage.py migrate bookList
+
+Docker 安装----win7、win8 等需要利用 docker toolbox 来安装
+1下载Docker toolbox
+2.开启虚拟化技术
+2.安装完成，启动
+3.运行，docker quickstart,
+
+docker --django
+1.docker vesion
+2.docker run hello-world
+3.创建并命名一个文件夹
+4.创建一个没有后缀的Dockerfile文件，并添加内容，参照 https://docs.docker.com/compose/django/#define-the-project-components
+5.创建一个requirements.txt文件，并添加所需软件，参照同上
+6.创建docker-compose.yml，文件，文件描述了制作您的应用的“服务”
+7.创建一个django 项目
+   1.切换到您的项目目录的根目录。
+   2.通过运行docker-compose run命令来创建Django项目 -- 
+   docker-compose run web django-admin.py startproject books .
+8.您将为Django设置数据库连接。
+   1.在您的项目目录中，编辑该books/settings.py文件。
+   2.从项目的顶级目录运行docker-compose up命令。----docker-compose up
