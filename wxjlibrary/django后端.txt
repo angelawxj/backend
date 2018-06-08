@@ -169,5 +169,9 @@ docker --django
    2.通过运行docker-compose run命令来创建Django项目 -- 
    docker-compose run web django-admin.py startproject books .
 8.您将为Django设置数据库连接。
-   1.在您的项目目录中，编辑该books/settings.py文件。
-   2.从项目的顶级目录运行docker-compose up命令。----docker-compose up
+   1.在您的项目目录中，编辑该books/settings.py文件。ALLOWED_HOSTS = ['*']
+   2.docker-compose run web python manage.py migrate 更新数据库
+   3.从项目的顶级目录运行docker-compose up命令。----docker-compose up
+   4.启动kitematic,点击容器docker_web_1,运行成功后
+   5.浏览器中打开http://192.168.99.100:8000/ 
+   
