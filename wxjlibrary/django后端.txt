@@ -174,4 +174,14 @@ docker --django
    3.从项目的顶级目录运行docker-compose up命令。----docker-compose up
    4.启动kitematic,点击容器docker_web_1,运行成功后
    5.浏览器中打开http://192.168.99.100:8000/ 
+
    
+制作上传镜像
+1.为本地镜像打标签，docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]
+2.登录docker hub ： docker login
+3.镜像上传：docker push <hub-user>/<repo-name>:<tag>
+4.拉取镜像：docker pull  <hub-user>/<repo-name>:<tag> 例子：docker push lidnyun/kube-apiserver-amd64:v1.5.5
+
+
+部署到生产环境，供给其他计算机访问 Django + Uwsgi + Nginx
+1.
