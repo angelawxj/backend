@@ -183,5 +183,22 @@ docker --django
 4.拉取镜像：docker pull  <hub-user>/<repo-name>:<tag> 例子：docker push lidnyun/kube-apiserver-amd64:v1.5.5
 
 
-部署到生产环境，供给其他计算机访问 Django + Uwsgi + Nginx
-1.
+Amazon AWS上设置一台Linux服务器
+1.首先要有一个账号
+2.点击该页面中，所有服务中的EC2 https://us-east-2.console.aws.amazon.com/console/home?region=us-east-2
+3.点击“启动实例”Launch Instance按钮。
+4.选择一个操作系统
+
+从windows中连接到EC2实例
+1.下载putty https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+2. 打开PuTTYgen，点击load加载wxj.pem文件
+3.点击Save private key
+4.打开putty 在session中填入数据ec2-user@ec2-18-218-27-74.us-east-2.compute.amazonaws.com，具体参考https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html
+5.点击 category 中的connection ,在Seconds between keepalive中输入180
+6.展开connection 展开ssh,选择auth选择browse选择您为密钥对生成的 .ppk 文件，然后选择 Open。
+7.点击是，连接成功
+
+在mazon EC2上部署我们的Django应用程序
+1.sudo yum install python36 更新python
+2.切换到python3 --  alias python='/usr/bin/python3'
+3.查看版本python --version，应该已经成功了
