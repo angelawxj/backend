@@ -295,7 +295,7 @@ linux 常用操作
 	(wxj)hello@django:~$ pip install setproctitle
 	ps aux
 主管启动和监控
-	sudo apt-get  install supervisor
+	sudo apt-get install supervisor
 	我们将创建一个/etc/supervisor/conf.d/hello.conf以此内容命名的文件
 	mkdir -p /webapps/wxj/logs/
 	touch /webapps/wxj/logs/gunicorn_supervisor.log 
@@ -314,4 +314,22 @@ Nginx：现在可以将Nginx设置为外部应用程序及其静态文件的服务器。安装并启动Nginx：
 	在该sites-enabled文件夹中创建一个符号链接：sudo ln -s /etc/nginx/sites-available/hello /etc/nginx/sites-enabled/hello
 	sudo service nginx restart 
 
-   
+Nginx配置跨域请求 Access-Control-Allow-Origin * 参考http://blog.51cto.com/13523664/2060430
+	location / {  
+	  add_header Access-Control-Allow-Origin *;
+	  add_header Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept";
+	  add_header Access-Control-Allow-Methods "GET, POST, OPTIONS";
+	} 
+
+PostgreSQL 允许远程访问设置方法
+	pg_hba.conf：         host  all    all    0.0.0.0/0    md5
+	postgresql.conf ：    将行开头都#去掉，将行内容修改为listen_addresses=’*'
+
+postgresql 数据库操作
+1.sudo su - postgres
+2.psql 
+3.\l  --查找有哪些数据库
+3.\c exampledb  切换数据库
+4.\q 退出
+5.\d 查看表数
+6.DELETE FROM user_tbl WHERE id < 61 ;
