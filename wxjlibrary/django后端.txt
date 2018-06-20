@@ -333,3 +333,17 @@ postgresql 数据库操作
 4.\q 退出
 5.\d 查看表数
 6.DELETE FROM user_tbl WHERE id < 61 ;
+
+Python+Selenium+ChromeDriver自动化  参考https://blog.csdn.net/tyhj_sf/article/details/74891096
+1.创建文件夹selenium
+2.安装Selenium  ---  pip install selenium
+3.安装谷歌浏览器驱动，注意驱动的版本要与浏览器版本对应
+4.找到chrome 安装位置，浏览器输入chrome://version/
+	C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+5.把下载好的驱动包chromedriver.exe解压出来，放在谷歌浏览器安装目录下的Application目录中
+6.配置环境变量在path中添加chromedriver.exe的路径
+7.快速检验环境是否搭建成功
+
+
+django 添加数据到另一张表
+1.
