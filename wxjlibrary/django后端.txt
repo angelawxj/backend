@@ -346,4 +346,12 @@ Python+Selenium+ChromeDriver自动化  参考https://blog.csdn.net/tyhj_sf/article/de
 
 
 django 添加数据到另一张表
+1.新增一个接口，然后post
+
+vue 阅读器制作
+1.npm install --save FileReader
+2.npm install --save vue-pdf
+
+
+django rest framework 分页 参考https://wsvincent.com/official-django-rest-framework-tutorial-beginners-guide/
 1.

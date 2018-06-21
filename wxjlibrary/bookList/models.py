@@ -14,7 +14,7 @@ class Post(models.Model):
         db_table = 'books'
 
 
-class star(models.Model):
+class Star(models.Model):
     name = models.CharField(max_length=550, null=False, default="1")
     author = models.CharField(max_length=550, null=False, default="2")
     img_url = models.CharField(max_length=550, null=False, default="3")

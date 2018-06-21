@@ -11,6 +11,6 @@ class PostSerializer(serializers.ModelSerializer):
 class StarSerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = ('id', 'name', 'author', 'img_url','is_have')
+        fields = ('id', 'name', 'author', 'img_url')
         model = models.Star
 

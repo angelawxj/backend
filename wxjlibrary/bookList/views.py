@@ -9,5 +9,5 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.PostSerializer
 
 class StarViewSet(viewsets.ModelViewSet):
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+    queryset = models.Star.objects.all()
+    serializer_class = serializers.StarSerializer
