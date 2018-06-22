@@ -8,7 +8,7 @@
 
 8.在项目级的settings.py中，Installed_apps中添加 'todos'
 9.在应用级todos的models中写简单的模型代码
-10.已经更新了模型，接着制作迁移文件  ---  python manage.py makemigrations todos
+10.已经更新了模型，接着制作迁移文件  ---  todos
 11.使用迁移文件，迁移数据库          ---  python manage.py migrate todos
 12.使用django内置的管理应用程序与我们的数据进行交互，在todos/amdim.py 中引入模型，并注册模型
 13.创建一个superuser账户            ---  python manage.py createsuperuser
@@ -315,6 +315,7 @@ Nginx：现在可以将Nginx设置为外部应用程序及其静态文件的服务器。安装并启动Nginx：
 	sudo service nginx restart 
 
 Nginx配置跨域请求 Access-Control-Allow-Origin * 参考http://blog.51cto.com/13523664/2060430
+/etc/nginx/sites-available/hello
 	location / {  
 	  add_header Access-Control-Allow-Origin *;
 	  add_header Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept";
@@ -354,4 +355,11 @@ vue 阅读器制作
 
 
 django rest framework 分页 参考https://wsvincent.com/official-django-rest-framework-tutorial-beginners-guide/
-1.
+
+
+django 搜索查询功能  参考
+1.pipenv install django-filter   卸载： pipenv uninstall django-filter
+2.'django_filters',
+3.pip install django-filter
+4.from rest_framework.filters import SearchFilter
+5.from django_filters import rest_framework as filters
