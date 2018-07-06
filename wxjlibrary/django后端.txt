@@ -115,6 +115,7 @@ heroku 部署结束，更新代码
 5.pip install pypiwin32
 6.pip install pymysql
 7.pip install psycopg2
+8.pip install Pillow
 
 创建一个爬虫项目
 1.scrapy startproject spider
@@ -128,13 +129,16 @@ mysql 创建数据库命令
 2.创建数据库 CREATE DATABASE amazon;
 3.显示当前已经有的数据库：show databases;
 4.使用某个数据库 use amazon;
+5.删除数据库drop database amazon;
 
 创建表
 1.use amazon
 2.create table book(name VARCHAR(100) NOT NULL);
-3.创建自动增长的ID;CREATE TABLE book(id int(5) NOT NULL auto_increment,name varchar(555),author varchar(555),img_url varchar(555),primary key (id) )
+3.创建自动增长的ID;CREATE TABLE book(id int(5) NOT NULL auto_increment,type varchar(555),title varchar(555),summary varchar(555),tool1 varchar(555),tool2 varchar(555),steptitle1 varchar(555),step1 varchar(555),stepimg1 varchar(555),steptitle2 varchar(555),step2 varchar(555),stepimg2 varchar(555),steptitle3 varchar(555),step3 varchar(555),stepimg3 varchar(555),steptitle4 varchar(555),step4 varchar(555),stepimg4 varchar(555),steptitle5 varchar(555),step5 varchar(555),stepimg5 varchar(555),note1 varchar(555),note2 varchar(555),primary key (id) )
+   img_url varchar(555)
 4.查看表数据 select * from book;
 5.删除表命令 drop table book;
+6.truncate table tablename  删除表中所有数据
 
 django api 使用mysql
 1.在setting.by中
@@ -335,23 +339,10 @@ postgresql 数据库操作
 5.\d 查看表数
 6.DELETE FROM user_tbl WHERE id < 61 ;
 
-Python+Selenium+ChromeDriver自动化  参考https://blog.csdn.net/tyhj_sf/article/details/74891096
-1.创建文件夹selenium
-2.安装Selenium  ---  pip install selenium
-3.安装谷歌浏览器驱动，注意驱动的版本要与浏览器版本对应
-4.找到chrome 安装位置，浏览器输入chrome://version/
-	C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-5.把下载好的驱动包chromedriver.exe解压出来，放在谷歌浏览器安装目录下的Application目录中
-6.配置环境变量在path中添加chromedriver.exe的路径
-7.快速检验环境是否搭建成功
-
 
 django 添加数据到另一张表
 1.新增一个接口，然后post
 
-vue 阅读器制作
-1.npm install --save FileReader
-2.npm install --save vue-pdf
 
 
 django rest framework 分页 参考https://wsvincent.com/official-django-rest-framework-tutorial-beginners-guide/
@@ -363,3 +354,66 @@ django 搜索查询功能  参考
 3.pip install django-filter
 4.from rest_framework.filters import SearchFilter
 5.from django_filters import rest_framework as filters
+
+导入.sql文件并运行--MYSQL workbench
+1.点击file -> SQL CREATE Script
+2.打开之后，点击顶部第一个闪电图标
+
+
+scrapy 模拟登录
+1.故意输入错的账号密码，查看form data参数，chrome 的network
+2.settings 打开cookie ---COOKIES_ENABLES = True 
+
+
+Python+Selenium+ChromeDriver自动化  
+参考https://blog.csdn.net/tyhj_sf/article/details/74891096
+
+1.创建文件夹selenium
+2.安装Selenium  ---  pip install selenium
+3.安装谷歌浏览器驱动，注意驱动的版本要与浏览器版本对应 --浏览器输入chrome://version/
+4.找到chrome 安装位置，鼠标右键chrome图标，打开文件位置即可找到安装位置，默认是
+	C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+5.把下载好的驱动包chromedriver.exe解压出来，放在谷歌浏览器安装目录下的Application目录中
+6.配置环境变量在path中添加chromedriver.exe的路径
+7.快速检验环境是否搭建成功
+8.若chrome 打开同时出现了-----Windows Defender 防病毒要重置您的设置.
+   打开运行 输入regedit，进入注册表
+   路径 HKEY_CURRENT_USER\Software\Google\Chrome 干掉TriggeredReset这个目录。					  
+9.点击某个按钮
+  获取元素id,class ----- button = driver.find_element_by_id(id), find_element_by_class_name
+  点击元素  button.click()
+  填入数据  button.send_keys(str)
+  时间停顿  import time  time.sleep(3)
+  模拟鼠标点击  actions = ActionChains(browser)  actions.click(sumbit).perform()
+10.连接到mysql
+   conn =pymysql.connect(host='127.0.0.1', port=3306, db='amazon', user='root', passwd='dong1990', charset='utf8')
+   cur=conn.cursor()
+   sql="SELECT * FROM booklist t where t.name='择天记'"
+   cur.execute(sql)
+   db.close() ---关闭数据库连接
+   fetchone(): 该方法获取下一个查询结果集。结果集是一个对象
+   fetchall():接收全部的返回结果行.
+   rowcount: 这是一个只读属性，并返回执行execute()方法后影响的行数。
+    try:
+		driver.find_element_by_id("kw")
+        print("test pass: ID found")
+	except Exception as e:
+		print("Exception found", format(e))
+
+
+xpath
+1.遇到font 读取不出来用string(.)
+
+scrapy 爬取 苦瓜书盘 “https://kgbook.com/” 所有书籍
+
+scrapy 下载文件并保持原来的文件名
+
+翻译api  ---googletrans
+1.pip install googletrans
+2.引入翻译： from googletrans import Translator
+3.用翻译
+    translator = Translator(service_urls=[
+        'translate.google.cn',
+     ])
+	translator.translate('hello', dest='zh-CN').text
+
