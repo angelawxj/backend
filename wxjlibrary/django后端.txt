@@ -139,6 +139,8 @@ mysql 创建数据库命令
 4.查看表数据 select * from book;
 5.删除表命令 drop table book;
 6.truncate table tablename  删除表中所有数据
+7.删除数据为空的行
+delete from books where steptitle1 = '' OR steptitle2 = '' OR steptitle3  OR steptitle4 OR step1= '' OR step2= '' OR step3= '' OR step4= '';
 
 django api 使用mysql
 1.在setting.by中
