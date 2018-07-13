@@ -139,7 +139,8 @@ mysql 创建数据库命令
 4.查看表数据 select * from book;
 5.删除表命令 drop table book;
 6.truncate table tablename  删除表中所有数据
-7.删除数据为空的行
+7.select count(1) from books; 查看有几条数据
+8.删除数据为空的行
 delete from books where steptitle1 = '' OR steptitle2 = '' OR steptitle3  OR steptitle4 OR step1= '' OR step2= '' OR step3= '' OR step4= '';
 
 django api 使用mysql
@@ -419,3 +420,20 @@ scrapy 下载文件并保持原来的文件名
      ])
 	translator.translate('hello', dest='zh-CN').text
 
+英文博客，微信公众号，中文博客
+1.注册 https://mp.weixin.qq.com/
+  点击注册，选择订阅号，输入信息
+2.域名
+
+阿里云服务器购买流程
+1.
+关键词
+
+TensorFlow----人脸识别登录
+1.安装 pip3 install --upgrade tensorflow
+2.词汇：AI作家，AI智能虚拟代理，视频换脸，翻译，AlphaZero 5000个TPU、自学3天
+
+算法
+
+
+  
