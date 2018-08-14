@@ -123,7 +123,8 @@ heroku 部署结束，更新代码
 3.运行爬虫		  scrapy crawl quotes
   运行成Excel文件 scrapy crawl amazon -o data.csv  
   运行成json文件，scrapy crawl amazon -o amazon.json
- 
+4.爬虫连接数据的时候，不用使用str,会出现多余字符，用  ''.join
+
 mysql 创建数据库命令
 1.打开mysql commmand line client
 2.创建数据库 CREATE DATABASE amazon;
@@ -134,15 +135,20 @@ mysql 创建数据库命令
 创建表
 1.use amazon
 2.create table book(name VARCHAR(100) NOT NULL);
-3.创建自动增长的ID;CREATE TABLE book(id int(5) NOT NULL auto_increment,type varchar(555),title varchar(555),summary varchar(555),tool1 varchar(555),tool2 varchar(555),steptitle1 varchar(555),step1 varchar(555),stepimg1 varchar(555),steptitle2 varchar(555),step2 varchar(555),stepimg2 varchar(555),steptitle3 varchar(555),step3 varchar(555),stepimg3 varchar(555),steptitle4 varchar(555),step4 varchar(555),stepimg4 varchar(555),steptitle5 varchar(555),step5 varchar(555),stepimg5 varchar(555),note1 varchar(555),note2 varchar(555),primary key (id) )
-   img_url varchar(555)
+3.创建自动增长的ID;CREATE TABLE books(id int(5) NOT NULL auto_increment,type varchar(555),title varchar(555),summary varchar(555),tool1 varchar(555),tool2 varchar(555),steptitle1 varchar(555),step1 varchar(555),stepimg1 varchar(555),steptitle2 varchar(555),step2 varchar(555),stepimg2 varchar(555),steptitle3 varchar(555),step3 varchar(555),stepimg3 varchar(555),steptitle4 varchar(555),step4 varchar(555),stepimg4 varchar(555),steptitle5 varchar(555),step5 varchar(555),stepimg5 varchar(555),steptitle6 varchar(555),step6 varchar(555),stepimg6 varchar(555),steptitle7 varchar(555),step7 varchar(555),stepimg7 varchar(555),note1 varchar(555),note2 varchar(555),primary key (id) );
+     CREATE TABLE jy(id int(5) NOT NULL auto_increment,type varchar(555),title varchar(555),content varchar(10000),tool1 varchar(555),tool2 varchar(555),image varchar(555),note1 varchar(555),note2 varchar(555),primary key (id) );
+	 CREATE TABLE title(id int(5) NOT NULL auto_increment,type varchar(555),title varchar(555),content varchar(10000),primary key (id) );
+	 
+  img_url varchar(555)
+  
 4.查看表数据 select * from book;
 5.删除表命令 drop table book;
 6.truncate table tablename  删除表中所有数据
 7.select count(1) from books; 查看有几条数据
 8.删除数据为空的行
 delete from books where steptitle1 = '' OR steptitle2 = '' OR steptitle3  OR steptitle4 OR step1= '' OR step2= '' OR step3= '' OR step4= '';
-
+9.SELECT * FROM table LIMIT 0,20; 检索记录行 1-20 
+10.delete from book limit 20; 删除前20条数据
 django api 使用mysql
 1.在setting.by中
    DATABASES = {
@@ -407,10 +413,6 @@ Python+Selenium+ChromeDriver自动化
 xpath
 1.遇到font 读取不出来用string(.)
 
-scrapy 爬取 苦瓜书盘 “https://kgbook.com/” 所有书籍
-
-scrapy 下载文件并保持原来的文件名
-
 翻译api  ---googletrans
 1.pip install googletrans
 2.引入翻译： from googletrans import Translator
@@ -419,21 +421,115 @@ scrapy 下载文件并保持原来的文件名
         'translate.google.cn',
      ])
 	translator.translate('hello', dest='zh-CN').text
+	
+Scrapy+Selenium动态爬虫---爬取鼠标下滚动，页面加载更多的数据
+1.driver.find_element_by_xpath("//li[@class='css-8wnrqm']/div/div/a/h2")
+   selenium 控制鼠标，滚动几次到最底端，然后通过driver 获取到要爬取的数据，然后再返回给爬虫
+   但是爬虫运行过程，出现，即使已经翻墙，页面信息加载不全，无法获取第二页，第三页的数据
+
+2.禁止加载图片
+    chrome_opt = webdriver.ChromeOptions()
+    prefs = {"profile.managed_default_content_settings.images":2}
+    chrome_opt.add_experimental_option("prefs", prefs)
+    webdriver.Chrome(executable_path=path)
+    driver= webdriver.Chrome(chrome_options=chrome_opt)
+
+python 基础
+1.re.sub(u"\\（.*?\\）", "", s) 删除字符串中的中文括号及里面的内容
+2.s="我是一个人(中国人)aaa[真的]bbbb{确定}"
+  a = re.sub(u"\\(.*?\\)|\\{.*?}|\\[.*?]", "", s)
+  删除英文 (),[],{}及里面的内容
+
+站群系统
+1. white hat SEO.  black hat SEO   gray hat SEO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+#以下是没有写完的教程
+
+TensorFlow----人脸识别登录
+1.安装 pip3 install --upgrade tensorflow
+2.词汇：AI作家，AI智能虚拟代理，视频换脸，翻译，AlphaZero 5000个TPU、自学3天,算法
 
 英文博客，微信公众号，中文博客
 1.注册 https://mp.weixin.qq.com/
   点击注册，选择订阅号，输入信息
 2.域名
 
-阿里云服务器购买流程
-1.
-关键词
 
-TensorFlow----人脸识别登录
-1.安装 pip3 install --upgrade tensorflow
-2.词汇：AI作家，AI智能虚拟代理，视频换脸，翻译，AlphaZero 5000个TPU、自学3天
+站长之家
+	关键词：链轮，站群，外链，黑帽seo,采集，蜘蛛池，蜘蛛劫持，快排，寄生虫shell,泛站群，自动链轮，泛二级目录
+	全讯，菠菜，皇冠以及百家乐，私服
+	堆砌,桥页,伪原创,刷百度指数,点击快速排名技术,友链欺骗技术,搜索留痕技术,自动外推（群发器）,搜索引擎劫持,网站权重劫持
+	黑链,站群系统,仿牌，游戏币，菠菜,百度医疗SEO,隐藏文本、链接欺骗、镜像网站、伪装,站轮,webshell
+	小发猫伪原创，抓站，EMU，国外IDC，视频搬运，PBN( Private Blog Networks),锚文本 ,反向链接,引用域，卖链接
+	ZF
+阿里蜘蛛池】破解版
 
-算法
+jy
+1.  10   账号
+    1年  2万条数据
+    月均 500条
+    周任务  1天10账号 20条
+    每天自动发布3条
+
+2.数据采集
+关键词：瑜伽，  
+        
 
 
-  
+
