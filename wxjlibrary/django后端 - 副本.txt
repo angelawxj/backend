@@ -1,0 +1,535 @@
+1.在桌面创建一个文件夹todo
+2.在todo里面再创建一个文件夹backend
+3.在backend里面安装django       ---    pipenv install django
+4.运行环境                      ---    pipenv shell
+5.在backend 中创建一个项目todo_api ---  django-admin startproject todo_api .
+6.在backend 中创建一个应用 todos   ---	python manage.py startapp todos
+7.在backend 中创建数据库           ---  python manage.py migrate
+
+8.在项目级的settings.py中，Installed_apps中添加 'todos'
+9.在应用级todos的models中写简单的模型代码
+10.已经更新了模型，接着制作迁移文件  ---  todos
+11.使用迁移文件，迁移数据库          ---  python manage.py migrate todos
+12.使用django内置的管理应用程序与我们的数据进行交互，在todos/amdim.py 中引入模型，并注册模型
+13.创建一个superuser账户            ---  python manage.py createsuperuser
+14.启动本地服务器，导航到http://127.0.0.1:8000/admin/    ---  python manage.py runserver
+15.在内置管理应用程序中点击todos创建3个新的待办事项
+17.进行测试 todos/tests.py 中添加测试代码
+18.确保我们的测试正在运行，退出本地服务器Control+c并运行python manage.py test
+
+19.在backend中安装Django Rest Framework      ---  pipenv install djangorestframework
+20.在项目级的settings.py中，Installed_apps中添加 'rest_framework'，和REST_FRAMEWORK 变量
+21.在项目级的urls.py中,增加todos的路径 --- path('api/', include('todos.urls'))，并导入include
+22.创建应用程序级的urls文件，并添加代码
+23.制作我们的第一个序列化程序，在todos中创建serializers.py文件，写入代码
+24.在todos/views.py中写入通用视图代码
+
+25.我们的API已经准备好使用了，可以浏览的API,运行，打开 http://127.0.0.1:8000/api/
+
+26.最后一步，跨源资源共享（CORS）,使用中间件在backend中  --- pipenv install django-cors-headers
+27.然后在项目级settings.py的三个地方更新我们的文件，1.Installed_apps中添加corsheaders  2.MIDDLEWARE添加中间件 3.CORS_ORIGIN_WHITELIST白名单，vue,默认的本地端口地址
+
+28.好了，接下来就是创建一个vue项目，在此查看创建vue项目的详细教程https://www.jianshu.com/p/1626b8643676
+
+
+
+
+自定义用户模型 
+
+
+
+请参照 https://wsvincent.com/django-custom-user-model-tutorial/
+
+1.更新 settings
+	1.添加users 应用程序  
+	2.使用AUTH_USER_MODEL配置来告诉Django使用我们的新的自定义用户模型来代替内置User模型。
+	我们将调用我们的自定义用户模型CustomUser
+	在整个文件的底部添加AUTH_USER_MODEL配置。
+	AUTH_USER_MODEL = 'users.CustomUser'
+2.更新 users/models
+3.创建新文件 users/forms.py ,写入代码，对现有表单进行子类化
+4.更新 users/admin 
+5.(users) $ python manage.py makemigrations users  
+  (users) $ python manage.py migrate	
+6.创建超级用户 python manage.py createsuperuser 并允许 python manage.py rusnerver
+
+
+
+创建RESTful API 
+
+代码参考 https://wsvincent.com/django-rest-framework-tutorial/
+https://wsvincent.com/django-rest-framework-react-tutorial/
+
+1.安装Django Rest Framework   --- pipenv install djangorestframework
+2.在项目级的settings.py中，Installed_apps中添加 'rest_framework'
+3.序列化模型  在应用中创建 serializers.py文件并写入代码
+4.更新应用中的view.py 使用Viewsets
+5.更新应用中的urls.py 写入代码
+6.最后一步处理，跨源资源共享（CORS）
+  安装中间件：pipenv install django-cors-headers
+7.在settings中三个地方更新文件：
+  1.添加corsheaders到INSTALLED_APPS
+  2.在MIDDLEWARE中添加2个中间件
+  3.创建一个 CORS_ORIGIN_WHITELIST 
+    CORS_ORIGIN_WHITELIST = (
+    	'localhost:3000/'
+    )
+
+
+
+heroku 部署
+
+1.在heroku上注册
+2.下载安装keroku
+3.heroku login 登录 密码：Wxj7153617266@
+4.git clone https://github.com/angelawxj/wxjlibrary.git
+5.cd wxjlibrary
+6.heroku create 在Heroku上创建一个应用程序
+7.git push heroku master 部署代码
+
+git连接 github
+1.ssh-keygen -t rsa -C "注册邮箱" ,用户主目录/.ssh/下有两个文件，id_rsa是私钥
+  id_rsa.pub是公钥，复制公钥
+2.登录GitHub，打开"SSH Keys"页面，点击添加ssh key ,并黏贴进去
+3.ssh -T git@github.com，测试ssh key是否成功
+  如果出现You’ve successfully authenticated, but GitHub does not provide shell access 
+  这就表示已成功连上github。
+4.第一次推送加 -u,  git push -u origin master
+
+  
+heroku 部署结束，更新代码
+
+1.项目下heroku login 
+2.连接heroku git:remote -a obscure-badlands-74461
+3.heroku config:set DISABLE_COLLECTSTATIC=1
+4.更新代码git push heroku master
+5.打开heroku ps:scale web=1
+6.heroku open
+
+
+安装scrapy  -- https://www.lfd.uci.edu/~gohlke/pythonlibs/#twisted
+1.pip install wheel
+2.pip install  Twisted-18.4.0-cp36-cp36m-win_amd64.whl
+3.pip install Scrapy
+4.pip install pyopenssl
+5.pip install pypiwin32
+6.pip install pymysql
+7.pip install psycopg2
+8.pip install Pillow
+
+创建一个爬虫项目
+1.scrapy startproject spider
+2.创建一个新的spider：scrapy genspider mydomain mydomain.com，并写入代码
+3.运行爬虫		  scrapy crawl quotes
+  运行成Excel文件 scrapy crawl amazon -o data.csv  
+  运行成json文件，scrapy crawl amazon -o amazon.json
+4.爬虫连接数据的时候，不用使用str,会出现多余字符，用  ''.join
+
+mysql 创建数据库命令
+1.打开mysql commmand line client
+2.创建数据库 CREATE DATABASE amazon;
+3.显示当前已经有的数据库：show databases;
+4.使用某个数据库 use amazon;
+5.删除数据库drop database amazon;
+
+创建表
+1.use amazon
+2.create table book(name VARCHAR(100) NOT NULL);
+3.创建自动增长的ID;CREATE TABLE books(id int(5) NOT NULL auto_increment,type varchar(555),title varchar(555),summary varchar(555),tool1 varchar(555),tool2 varchar(555),steptitle1 varchar(555),step1 varchar(555),stepimg1 varchar(555),steptitle2 varchar(555),step2 varchar(555),stepimg2 varchar(555),steptitle3 varchar(555),step3 varchar(555),stepimg3 varchar(555),steptitle4 varchar(555),step4 varchar(555),stepimg4 varchar(555),steptitle5 varchar(555),step5 varchar(555),stepimg5 varchar(555),steptitle6 varchar(555),step6 varchar(555),stepimg6 varchar(555),steptitle7 varchar(555),step7 varchar(555),stepimg7 varchar(555),note1 varchar(555),note2 varchar(555),primary key (id) );
+     CREATE TABLE jy(id int(5) NOT NULL auto_increment,type varchar(555),title varchar(555),content varchar(10000),tool1 varchar(555),tool2 varchar(555),image varchar(555),note1 varchar(555),note2 varchar(555),primary key (id) );
+	 CREATE TABLE title(id int(5) NOT NULL auto_increment,type varchar(555),title varchar(555),content varchar(10000),primary key (id) );
+	 
+  img_url varchar(555)
+  
+4.查看表数据 select * from book;
+5.删除表命令 drop table book;
+6.truncate table tablename  删除表中所有数据
+7.select count(1) from books; 查看有几条数据
+8.删除数据为空的行
+delete from books where steptitle1 = '' OR steptitle2 = '' OR steptitle3  OR steptitle4 OR step1= '' OR step2= '' OR step3= '' OR step4= '';
+9.SELECT * FROM table LIMIT 0,20; 检索记录行 1-20 
+10.delete from book limit 20; 删除前20条数据
+django api 使用mysql
+1.在setting.by中
+   DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',   # 数据库引擎
+        'NAME': 'amazon',  # 数据库名，先前创建的
+        'USER': 'root',     # 用户名，可以自己创建用户
+        'PASSWORD': 'dong1990',  # 密码
+        'HOST': '127.0.0.1',  # mysql服务所在的主机ip
+        'PORT': '3306',         # mysql服务端口
+    }
+  }
+2.pip install mysqlclient
+3. python manage.py makemigrations bookList
+4.  python manage.py migrate bookList
+
+Docker 安装----win7、win8 等需要利用 docker toolbox 来安装
+1下载Docker toolbox
+2.开启虚拟化技术
+2.安装完成，启动
+3.运行，docker quickstart,
+
+docker --django
+1.docker vesion
+2.docker run hello-world
+3.创建并命名一个文件夹
+4.创建一个没有后缀的Dockerfile文件，并添加内容，参照 https://docs.docker.com/compose/django/#define-the-project-components
+5.创建一个requirements.txt文件，并添加所需软件，参照同上
+6.创建docker-compose.yml，文件，文件描述了制作您的应用的“服务”
+7.创建一个django 项目
+   1.切换到您的项目目录的根目录。
+   2.通过运行docker-compose run命令来创建Django项目 -- 
+   docker-compose run web django-admin.py startproject books .
+8.您将为Django设置数据库连接。
+   1.在您的项目目录中，编辑该books/settings.py文件。ALLOWED_HOSTS = ['*']
+   2.docker-compose run web python manage.py migrate 更新数据库
+   3.从项目的顶级目录运行docker-compose up命令。----docker-compose up
+   4.启动kitematic,点击容器docker_web_1,运行成功后
+   5.浏览器中打开http://192.168.99.100:8000/ 
+
+   
+制作上传镜像
+1.为本地镜像打标签，docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]
+2.登录docker hub ： docker login
+3.镜像上传：docker push <hub-user>/<repo-name>:<tag>
+4.拉取镜像：docker pull  <hub-user>/<repo-name>:<tag> 例子：docker push lidnyun/kube-apiserver-amd64:v1.5.5
+
+
+Amazon AWS上设置一台Linux服务器
+1.首先要有一个账号
+2.点击该页面中，所有服务中的EC2 https://us-east-2.console.aws.amazon.com/console/home?region=us-east-2
+3.点击“启动实例”Launch Instance按钮。
+4.选择一个操作系统
+
+从windows中连接到EC2实例
+1.下载putty https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+2. 打开PuTTYgen，点击load加载wxj.pem文件
+3.点击Save private key
+4.打开putty 在session中填入数据ec2-user@ec2-18-218-27-74.us-east-2.compute.amazonaws.com，具体参考https://docs.aws.amazon.com/zh_cn/AWSEC2/latest/UserGuide/putty.html
+5.点击 category 中的connection ,在Seconds between keepalive中输入180
+6.展开connection 展开ssh,选择auth选择browse选择您为密钥对生成的 .ppk 文件，然后选择 Open。
+7.点击是，连接成功
+
+在mazon EC2上部署我们的Django应用程序
+1.sudo yum install python36 更新python
+2.切换到python3 --  alias python='/usr/bin/python3'
+3.查看版本python --version，应该已经成功了
+4.docker
+    1.安装docker, sudo yum install -y docker
+	2.启动docker服务 sudo service docker start
+	3.sudo docker info,  sudo docker images
+	4. 将 ec2-user 添加到 docker 组，以便您能够执行 Docker 命令，而无需使用 sudo。
+	   sudo usermod -a -G docker ec2-user
+	5.cd django
+	6.touch Dockerfile
+
+	
+连接linux后，获得root权限,并安装docker
+1.sudo passwd root  //设置root密码
+2.su root //切换到root
+3.安装docker, yum install -y docker  
+4. sudo service docker start //启动docker服务
+5.docker info 查看docker的信息
+
+
+
+linux 常用操作
+1.返回上一级菜单： cd ..
+2.删除文件夹： sudo rm -r 文件夹名
+3.删除文件：   sudo rm -f  文件名
+4.编辑某个文件 vi 文件名
+5.重命名文件或文件夹 mv A B  将目录A重命名为B
+6.编辑文件并保存  nano 文件名  ctrl+o enter
+
+
+在aws ec2 ubuntu服务器上部署 django + nginx +gunicorn +virtualenv + supervisor + PostgreSQL 
+参考：http://michal.karzynski.pl/blog/2013/06/09/django-nginx-gunicorn-virtualenv-supervisor/
+      https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04
+1.更新系统
+  sudo apt-get update
+  sudo apt-get upgrade
+2.安装 postgresql:  sudo apt-get install postgresql postgresql-contrib
+3.为应用程序创建一个数据库用户和一个新的数据库
+    sudo su - postgres
+	createuser --interactive -P
+	创建用户名密码：wxj 7153617266 创建一个新的超级用户 否
+	createdb --owner wxj hello
+	logout
+4.为您的应用创建一个用户，命名hello并分配给名为的系统组webapps。
+    sudo groupadd --system webapps
+	sudo useradd --system --gid webapps --shell /bin/bash --home /webapps/wxj hello
+5.安装virtualenv并为你创建一个应用程序的环境
+    sudo apt-get install python-virtualenv
+6.为您的应用程序创建并激活一个环境
+    sudo mkdir -p /webapps/wxj/
+	sudo chown hello /webapps/wxj/
+	sudo su - hello
+	cd /webapps/wxj/
+	virtualenv .
+	source bin/activate
+7.您的环境现在已激活，您可以继续在其中安装Django。
+	pip install django
+8.你的Django环境应该可以使用了。继续并创建一个空的Django项目
+	django-admin.py startproject hello
+9.您可以通过运行开发服务器来测试它：
+	cd hello
+	python manage.py runserver ec2-52-15-69-67.us-east-2.compute.amazonaws.com:8000
+10.允许其他用户向应用程序目录写入访问权限
+   sudo chown -R hello:users /webapps/wxj
+   sudo chmod -R g+w /webapps/wxj
+   id
+   sudo usermod -a -G users `whoami`
+   
+11.配置PostgreSQL以使用Django
+   sudo apt-get install libpq-dev python-dev
+   sudo su - hello
+   打开虚拟环境source bin/activate ，关闭虚拟环境 deactivate
+   pip install psycopg2
+   修改setting.py 为postgredsql
+   cd hello
+   python manage.py migrate
+12.Gunicorn在生产中，我们不会使用Django的单线程开发服务器，而是专用的应用程序服务器gunicorn。
+   在应用程序的虚拟环境中安装gunicorn：
+   pip install gunicorn
+   gunicorn hello.wsgi:application --bind ec2-52-15-69-67.us-east-2.compute.amazonaws.com:8000
+13.Gunicorn已安装并准备好为您的应用程序提供服务。让我们设置一些配置选项，使其更有用
+   我喜欢设置一些参数，所以我们把它们全部放到一个小的BASH脚本中，我保存为bin/gunicorn_start
+   在gunicorn_start脚本上设置可执行位：sudo chmod u+x bin/gunicorn_start
+14.您可以gunicorn_start通过以用户身份运行脚本来测试脚本hello。
+	sudo su - hello
+	bin/gunicorn_start
+	sudo apt-get install python-dev
+	ctrl + c
+	exit
+	你需要安装一个名为的Python模块setproctitle。构建这个本地扩展pip需要访问Python的C头文件。您可以使用该python-dev软件包将它们添加到系统中，然后进行安装setproctitle。
+    sudo apt-get install python-dev
+	(wxj)hello@django:~$ pip install setproctitle
+	ps aux
+主管启动和监控
+	sudo apt-get install supervisor
+	我们将创建一个/etc/supervisor/conf.d/hello.conf以此内容命名的文件
+	mkdir -p /webapps/wxj/logs/
+	touch /webapps/wxj/logs/gunicorn_supervisor.log 
+	sudo supervisorctl reread
+	sudo supervisorctl update
+	sudo supervisorctl status hello      
+	sudo supervisorctl stop hello  
+	sudo supervisorctl start hello   
+	sudo supervisorctl restart hello 
+	
+	
+Nginx：现在可以将Nginx设置为外部应用程序及其静态文件的服务器。安装并启动Nginx：
+	sudo apt-get install nginx
+	sudo service nginx start
+	创建一个新的nginx服务器配置文件/etc/nginx/sites-available/hello。
+	在该sites-enabled文件夹中创建一个符号链接：sudo ln -s /etc/nginx/sites-available/hello /etc/nginx/sites-enabled/hello
+	sudo service nginx restart 
+
+Nginx配置跨域请求 Access-Control-Allow-Origin * 参考http://blog.51cto.com/13523664/2060430
+/etc/nginx/sites-available/hello
+	location / {  
+	  add_header Access-Control-Allow-Origin *;
+	  add_header Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept";
+	  add_header Access-Control-Allow-Methods "GET, POST, OPTIONS";
+	} 
+
+PostgreSQL 允许远程访问设置方法
+	pg_hba.conf：         host  all    all    0.0.0.0/0    md5
+	postgresql.conf ：    将行开头都#去掉，将行内容修改为listen_addresses=’*'
+
+postgresql 数据库操作
+1.sudo su - postgres
+2.psql 
+3.\l  --查找有哪些数据库
+3.\c exampledb  切换数据库
+4.\q 退出
+5.\d 查看表数
+6.DELETE FROM user_tbl WHERE id < 61 ;
+
+
+django 添加数据到另一张表
+1.新增一个接口，然后post
+
+
+
+django rest framework 分页 参考https://wsvincent.com/official-django-rest-framework-tutorial-beginners-guide/
+
+
+django 搜索查询功能  参考
+1.pipenv install django-filter   卸载： pipenv uninstall django-filter
+2.'django_filters',
+3.pip install django-filter
+4.from rest_framework.filters import SearchFilter
+5.from django_filters import rest_framework as filters
+
+导入.sql文件并运行--MYSQL workbench
+1.点击file -> SQL CREATE Script
+2.打开之后，点击顶部第一个闪电图标
+
+
+scrapy 模拟登录
+1.故意输入错的账号密码，查看form data参数，chrome 的network
+2.settings 打开cookie ---COOKIES_ENABLES = True 
+
+
+Python+Selenium+ChromeDriver自动化  
+参考https://blog.csdn.net/tyhj_sf/article/details/74891096
+
+1.创建文件夹selenium
+2.安装Selenium  ---  pip install selenium
+3.安装谷歌浏览器驱动，注意驱动的版本要与浏览器版本对应 --浏览器输入chrome://version/
+4.找到chrome 安装位置，鼠标右键chrome图标，打开文件位置即可找到安装位置，默认是
+	C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+5.把下载好的驱动包chromedriver.exe解压出来，放在谷歌浏览器安装目录下的Application目录中
+6.配置环境变量在path中添加chromedriver.exe的路径
+7.快速检验环境是否搭建成功
+8.若chrome 打开同时出现了-----Windows Defender 防病毒要重置您的设置.
+   打开运行 输入regedit，进入注册表
+   路径 HKEY_CURRENT_USER\Software\Google\Chrome 干掉TriggeredReset这个目录。					  
+9.点击某个按钮
+  获取元素id,class ----- button = driver.find_element_by_id(id), find_element_by_class_name
+  点击元素  button.click()
+  填入数据  button.send_keys(str)
+  时间停顿  import time  time.sleep(3)
+  模拟鼠标点击  actions = ActionChains(browser)  actions.click(sumbit).perform()
+10.连接到mysql
+   conn =pymysql.connect(host='127.0.0.1', port=3306, db='amazon', user='root', passwd='dong1990', charset='utf8')
+   cur=conn.cursor()
+   sql="SELECT * FROM booklist t where t.name='择天记'"
+   cur.execute(sql)
+   db.close() ---关闭数据库连接
+   fetchone(): 该方法获取下一个查询结果集。结果集是一个对象
+   fetchall():接收全部的返回结果行.
+   rowcount: 这是一个只读属性，并返回执行execute()方法后影响的行数。
+    try:
+		driver.find_element_by_id("kw")
+        print("test pass: ID found")
+	except Exception as e:
+		print("Exception found", format(e))
+
+
+xpath
+1.遇到font 读取不出来用string(.)
+
+翻译api  ---googletrans
+1.pip install googletrans
+2.引入翻译： from googletrans import Translator
+3.用翻译
+    translator = Translator(service_urls=[
+        'translate.google.cn',
+     ])
+	translator.translate('hello', dest='zh-CN').text
+	
+Scrapy+Selenium动态爬虫---爬取鼠标下滚动，页面加载更多的数据
+1.driver.find_element_by_xpath("//li[@class='css-8wnrqm']/div/div/a/h2")
+   selenium 控制鼠标，滚动几次到最底端，然后通过driver 获取到要爬取的数据，然后再返回给爬虫
+   但是爬虫运行过程，出现，即使已经翻墙，页面信息加载不全，无法获取第二页，第三页的数据
+
+2.禁止加载图片
+    chrome_opt = webdriver.ChromeOptions()
+    prefs = {"profile.managed_default_content_settings.images":2}
+    chrome_opt.add_experimental_option("prefs", prefs)
+    webdriver.Chrome(executable_path=path)
+    driver= webdriver.Chrome(chrome_options=chrome_opt)
+
+python 基础
+1.re.sub(u"\\（.*?\\）", "", s) 删除字符串中的中文括号及里面的内容
+2.s="我是一个人(中国人)aaa[真的]bbbb{确定}"
+  a = re.sub(u"\\(.*?\\)|\\{.*?}|\\[.*?]", "", s)
+  删除英文 (),[],{}及里面的内容
+
+站群系统
+1. white hat SEO.  black hat SEO   gray hat SEO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+#以下是没有写完的教程
+
+TensorFlow----人脸识别登录
+1.安装 pip3 install --upgrade tensorflow
+2.词汇：AI作家，AI智能虚拟代理，视频换脸，翻译，AlphaZero 5000个TPU、自学3天,算法
+
+英文博客，微信公众号，中文博客
+1.注册 https://mp.weixin.qq.com/
+  点击注册，选择订阅号，输入信息
+2.域名
+
+
+站长之家
+	关键词：链轮，站群，外链，黑帽seo,采集，蜘蛛池，蜘蛛劫持，快排，寄生虫shell,泛站群，自动链轮，泛二级目录
+	全讯，菠菜，皇冠以及百家乐，私服
+	堆砌,桥页,伪原创,刷百度指数,点击快速排名技术,友链欺骗技术,搜索留痕技术,自动外推（群发器）,搜索引擎劫持,网站权重劫持
+	黑链,站群系统,仿牌，游戏币，菠菜,百度医疗SEO,隐藏文本、链接欺骗、镜像网站、伪装,站轮,webshell
+	小发猫伪原创，抓站，EMU，国外IDC，视频搬运，PBN( Private Blog Networks),锚文本 ,反向链接,引用域，卖链接
+	ZF
+阿里蜘蛛池】破解版
+
+jy
+1.  10   账号
+    1年  2万条数据
+    月均 500条
+    周任务  1天10账号 20条
+    每天自动发布3条
+
+2.数据采集
+关键词：瑜伽，  
+        
+
+
+
