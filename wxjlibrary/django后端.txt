@@ -29,7 +29,7 @@
 26.最后一步，跨源资源共享（CORS）,使用中间件在backend中  --- pipenv install django-cors-headers
 27.然后在项目级settings.py的三个地方更新我们的文件，1.Installed_apps中添加corsheaders  2.MIDDLEWARE添加中间件 3.CORS_ORIGIN_WHITELIST白名单，vue,默认的本地端口地址
 
-28.好了，接下来就是创建一个vue项目，在此查看创建vue项目的详细教程https://www.jianshu.com/p/1626b8643676
+28.好了，接下来就是创建一个vue项目，在此查看创建vue项目的详细教程https://www.jianshu.com/p/1626b8643676请
 
 
 
@@ -510,49 +510,64 @@ godaddy 域名解析到bluehost 服务器上面
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 站群系统
 1. white hat SEO.  black hat SEO   gray hat SEO
+
+
+AI TensorFlow.js
+1.安装 yarn
+     安装Chocolatey    ---https://chocolatey.org/docs/installation
+     使用cmd.exe安装 
+     键入 choco或者 choco -?  -----测试是否安装成功
+     choco install yarn  安装yarn
+     yarn --version   ----测试是否安装成功
+     npm install -g yarn
+     yarn --version   ----验证成功
+2.yarn 使用
+     yarn或者 yarn install
+     yarn watch   ---启动本地开发HTTP服务器，该服务器监视文件系统的更改，
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -641,6 +656,7 @@ jy
 2.数据采集
 关键词：瑜伽，  
         
+wordpress 笔记
 
 
 
