@@ -30,10 +30,7 @@
 27.然后在项目级settings.py的三个地方更新我们的文件，1.Installed_apps中添加corsheaders  2.MIDDLEWARE添加中间件 3.CORS_ORIGIN_WHITELIST白名单，vue,默认的本地端口地址
 
 28.好了，接下来就是创建一个vue项目，在此查看创建vue项目的详细教程https://www.jianshu.com/p/1626b8643676请
-
-
-
-
+ 
 自定义用户模型 
 
 
@@ -95,7 +92,9 @@ git连接 github
   如果出现You’ve successfully authenticated, but GitHub does not provide shell access 
   这就表示已成功连上github。
 4.第一次推送加 -u,  git push -u origin master
-
+5.遇到，please tell me who you are
+  根据提示写，名字和邮箱
+  
   
 heroku 部署结束，更新代码
 
@@ -510,10 +509,6 @@ godaddy 域名解析到bluehost 服务器上面
 
 
 
-站群系统
-1. white hat SEO.  black hat SEO   gray hat SEO
-
-
 AI TensorFlow.js
 1.安装 yarn
      安装Chocolatey    ---https://chocolatey.org/docs/installation
@@ -526,7 +521,7 @@ AI TensorFlow.js
 2.yarn 使用
      yarn或者 yarn install
      yarn watch   ---启动本地开发HTTP服务器，该服务器监视文件系统的更改，
-    
+   
 
 
 
@@ -547,58 +542,6 @@ AI TensorFlow.js
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
