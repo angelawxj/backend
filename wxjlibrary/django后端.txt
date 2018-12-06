@@ -94,7 +94,7 @@ git连接 github
 4.第一次推送加 -u,  git push -u origin master
 5.遇到，please tell me who you are
   根据提示写，名字和邮箱
-  
+6.更新本地代码 ，git pull  
 
 git连接码云
 1.和github 一模一样
@@ -646,3 +646,9 @@ angular
 
 
 
+gulp
+1.npm install --global gulp
+1.gulp serve
+
+查看node版本：node -v 
+查看npm版本：npm -v
