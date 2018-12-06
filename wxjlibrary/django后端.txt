@@ -95,6 +95,9 @@ git连接 github
 5.遇到，please tell me who you are
   根据提示写，名字和邮箱
   
+
+git连接码云
+1.和github 一模一样
   
 heroku 部署结束，更新代码
 
@@ -633,7 +636,13 @@ wordpress 笔记
 5.子主题中添加 亚马逊广告
 
 
-
+angular
+1.安装NodeJs
+2.npm install -g @angular/cli 
+3.查看angular-cli版本，检查是否安装成功  ng -v 
+4.如果已经有现成项目，则，npm install
+5.npm run start   浏览器中localhost:4200
+6.打包ng build
 
 
 
