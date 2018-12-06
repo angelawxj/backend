@@ -524,7 +524,10 @@ AI TensorFlow.js
    
 
 
-
+javascript
+1.complete 属性可返回浏览器是否已完成对图像的加载。
+2.naturalHeight真实图片高度
+3.onload 事件会在页面或图像加载完成后立即发生。
 
 
 
@@ -600,6 +603,37 @@ jy
 关键词：瑜伽，  
         
 wordpress 笔记
+
+1. 创建子主题
+	
+    1.进入服务器后台，进入文件管理器 public_html/wp-content/themes，找到你的主题，并创建一个主题文件夹 例如：foodica-child
+    2.创建文件 style.css (必需)
+               functions.php (可选)
+               Template files (可选)
+               Other files (可选)
+    3.并写入一些注释
+    4.回到wordpress 后台，打开外观/主题,就会发现子主题已经在其中，点击启用子主题，会发现所有样式都消失了
+    5.style.css 中导入父主题样式  例如：@import url("../foodica/style.css");
+    6.这样样式就出现了，再创建一个functions.php文件
+
+2.版权申明
+
+   1.https://www.wpbeginner.com/wp-tutorials/how-to-add-a-dynamic-copyright-date-in-wordpress-footer/
+     步骤都在这里
+   COPYRIGHT@ 2018 WWW.CHINESERECIPESTODAY.COM ALL RIGHTS RESERVED.
+
+3.首页链接添加
+	
+   1.wordpress 后台，点击外观/菜单
+   2.左边的 page里面的查看全部里面有 home,点击添加到菜单，然后保存，就已经添加了首页链接了
+
+4.子主题添加google 广告
+  https://wordpress.stackexchange.com/questions/258806/how-to-add-adsense-code-to-child-theme
+
+5.子主题中添加 亚马逊广告
+
+
+
 
 
 
