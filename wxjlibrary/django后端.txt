@@ -644,11 +644,73 @@ angular
 5.npm run start   浏览器中localhost:4200
 6.打包ng build
 
-
+git强制覆盖：
+	git fetch --all
+	git reset --hard origin/master
+	git pull
 
 gulp
 1.npm install --global gulp
 1.gulp serve
-
 查看node版本：node -v 
 查看npm版本：npm -v
+
+完成PostgreSQL安装有三个步骤：
+	下载适用于Windows的PostgreSQL安装程序---https://www.postgresql.org/download/windows/
+	安装PostgreSQL
+	验证安装
+	
+
+小程序笔记
+1.运行小程序 wepy build --watch，安装 npm install
+2.如何给data里面的变量赋值，方法是method 外面的方法
+	this.setData({dd:"change1" })
+	或者
+	this.dd = ''
+	this.$apply()
+3.wepy 显示几分钟前功能
+4.当 wx:for 的值为字符串时，会将字符串解析成字符串数组,wx:if	
+5.image src变量怎么写
+	 <image src="{{desc.wxHeadimgurl}}"/>
+6.点击事件，阻止默认事件@tap.stop
+7.遇到对不起，您没有权限，该怎么解决
+8.父组件传一个数组给子组件
+9.monent兼容ios问题  monment("2019-2-11").format('YYYY-MM-DD');报错invalid date
+
+
+
+
+
+
+
+
+
+
+Jenkins + Django 持续部署生成环境
+	1.下载安装python   https://www.python.org/downloads/
+		安装时注意，要把配置环境变量勾上
+	2.$ pip install django-jenkins
+
+部署（Django）应用程序
+
+房产投资词汇
+
+1.短期拆借
+
+2.水库理论
+
+3.笋盘
+
+4.返租，租约
+
+5.担保
+
+6.大多数笋盘都存在部分特殊条件，比如硬伤折价，比如抵押风险，比如金融政策；
+
+7.选筹
+
+
+
+vue大总结
+1.底部导航菜单 tabBar
+	写静态底部导航的时候，要考虑把点击跳转路由写上  <router-link to="/home/index">Home</router-link>
